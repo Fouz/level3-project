@@ -1,0 +1,29 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: queue-master-pipelinerun 
+spec:
+  pipelineRef:
+    name: queue-master-pipeline
+  resources:
+    - name: level3-project
+      resourceRef:
+        name: level3-project
+  params:
+    - name: CONTEXT
+      value: "/workspace/level3-project/queue-master"
+    - name: DOCKERFILE
+      value: "/workspace/level3-project/queue-master/Dockerfile"
+    - name: pathToYamlFile
+      value: "level3-project/queue-master/queue-master-dep.yml"
+    - name: pathToSvcYamlFile
+      value: "level3-project/queue-master/svc.yml"
+    - name: pathToIngressYamlFile
+      value: "level3-project/queue-master/ingress.yml"
+    - name: imageUrl
+      value: "fouz/queue-master"
+    - name: imageTag
+      value: "latest"
+    - name: IMAGE
+      value: "fouz/queue-master"   
+  serviceAccountName: fouz-sa

@@ -1,0 +1,22 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: e2e-js-test-pipelinerun 
+spec:
+  pipelineRef:
+    name: e2e-js-test-pipeline
+  resources:
+    - name: level3-project
+      resourceRef:
+        name: e2e-js-test-src
+  params:
+    - name: imageUrl
+      value: "fouz/e2e-js-test"
+    - name: imageTag
+      value: "latest"
+    - name: IMAGE
+      value: "fouz/e2e-js-test"
+    - name: pathToYamlFile
+      value: "level3-project/dep.yaml"
+      
+  serviceAccountName: fouz-sa

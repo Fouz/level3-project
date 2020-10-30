@@ -1,0 +1,27 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: load-test-pipelinerun 
+spec:
+  pipelineRef:
+    name: load-test-pipeline
+  resources:
+    - name: level3-project
+      resourceRef:
+        name: level3-project
+  params:
+    - name: CONTEXT
+      value: "/workspace/level3-project/load-test"
+    - name: DOCKERFILE
+      value: "/workspace/level3-project/load-test/Dockerfile"
+    - name: pathToYamlFile
+      value: "level3-project/load-test/load-test-dep.yml"
+    - name: pathToSvcYamlFile
+      value: "level3-project/load-test/svc.yml"
+    - name: imageUrl
+      value: "fouz/load-test"
+    - name: imageTag
+      value: "latest"
+    - name: IMAGE
+      value: "fouz/load-test"   
+  serviceAccountName: fouz-sa

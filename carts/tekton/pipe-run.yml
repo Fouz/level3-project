@@ -1,0 +1,27 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: carts-pipelinerun 
+spec:
+  pipelineRef:
+    name: carts-pipeline
+  resources:
+    - name: level3-project
+      resourceRef:
+        name: level3-project
+  params:
+    - name: CONTEXT
+      value: "/workspace/level3-project/carts"
+    - name: DOCKERFILE
+      value: "/workspace/level3-project/carts/Dockerfile"
+    - name: pathToYamlFile
+      value: "level3-project/carts/carts-dep.yml"
+    - name: pathToSvcYamlFile
+      value: "level3-project/carts/svc.yml"
+    - name: imageUrl
+      value: "fouz/carts"
+    - name: imageTag
+      value: "latest"
+    - name: IMAGE
+      value: "fouz/carts"   
+  serviceAccountName: fouz-sa

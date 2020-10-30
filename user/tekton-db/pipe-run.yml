@@ -1,0 +1,29 @@
+
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: user-db-pipelinerun 
+spec:
+  pipelineRef:
+    name: user-db-pipeline
+  resources:
+    - name: level3-project
+      resourceRef:
+        name: level3-project
+  params:
+    - name: CONTEXT
+      value: "/workspace/level3-project/user"
+    - name: DOCKERFILE
+      value: "/workspace/level3-project/user/docker/user-db/Dockerfile"
+    - name: pathToYamlFile
+      value: "level3-project/user/user-db-dep.yml"
+    - name: pathToSvcYamlFile
+      value: "level3-project/user/svc-db.yml"
+    - name: imageUrl
+      value: "fouz/user-db"
+    - name: imageTag
+      value: "latest"
+    - name: IMAGE
+      value: "fouz/user-db"
+      
+  serviceAccountName: fouz-sa

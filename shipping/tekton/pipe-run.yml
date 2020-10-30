@@ -1,0 +1,29 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: shipping-pipelinerun 
+spec:
+  pipelineRef:
+    name: shipping-pipeline
+  resources:
+    - name: level3-project
+      resourceRef:
+        name: level3-project
+  params:
+    - name: CONTEXT
+      value: "/workspace/level3-project/shipping"
+    - name: DOCKERFILE
+      value: "/workspace/level3-project/shipping/Dockerfile"
+    - name: pathToYamlFile
+      value: "level3-project/shipping/shipping-dep.yml"
+    - name: pathToSvcYamlFile
+      value: "level3-project/shipping/svc.yml"
+    - name: pathToIngressYamlFile
+      value: "level3-project/shipping/ingress.yml"
+    - name: imageUrl
+      value: "fouz/shipping"
+    - name: imageTag
+      value: "latest"
+    - name: IMAGE
+      value: "fouz/shipping"   
+  serviceAccountName: fouz-sa

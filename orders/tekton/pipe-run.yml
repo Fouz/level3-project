@@ -1,0 +1,27 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: orders-pipelinerun 
+spec:
+  pipelineRef:
+    name: orders-pipeline
+  resources:
+    - name: level3-project
+      resourceRef:
+        name: level3-project
+  params:
+    - name: CONTEXT
+      value: "/workspace/level3-project/orders"
+    - name: DOCKERFILE
+      value: "/workspace/level3-project/orders/Dockerfile"
+    - name: pathToYamlFile
+      value: "level3-project/orders/orders-dep.yml"
+    - name: pathToSvcYamlFile
+      value: "level3-project/orders/svc.yml"
+    - name: imageUrl
+      value: "fouz/orders"
+    - name: imageTag
+      value: "latest"
+    - name: IMAGE
+      value: "fouz/orders"   
+  serviceAccountName: fouz-sa

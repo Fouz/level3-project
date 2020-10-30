@@ -1,0 +1,27 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: catalogue-pipelinerun 
+spec:
+  pipelineRef:
+    name: catalogue-pipeline
+  resources:
+    - name: level3-project
+      resourceRef:
+        name: level3-project
+  params:
+    - name: CONTEXT
+      value: "/workspace/level3-project/catalogue"
+    - name: DOCKERFILE
+      value: "/workspace/level3-project/catalogue/docker/catalogue/Dockerfile"
+    - name: pathToYamlFile
+      value: "level3-project/catalogue/catalogue-dep.yml"
+    - name: pathToSvcYamlFile
+      value: "level3-project/catalogue/svc.yml"
+    - name: imageUrl
+      value: "fouz/catalogue"
+    - name: imageTag
+      value: "latest"
+    - name: IMAGE
+      value: "fouz/catalogue"   
+  serviceAccountName: fouz-sa
