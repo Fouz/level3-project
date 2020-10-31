@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
-  name: payment-deploy
+  name: user-db-deploy
 spec:
   resources:
     inputs:
@@ -34,3 +34,4 @@ spec:
       - "/workspace/$(inputs.params.pathToYamlFile)"
       - "-f"
       - "/workspace/$(inputs.params.pathToSvcYamlFile)"
+      - "-n prod"

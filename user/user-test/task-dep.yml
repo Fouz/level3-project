@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
-  name: load-test-deploy
+  name: user-deploy
 spec:
   resources:
     inputs:

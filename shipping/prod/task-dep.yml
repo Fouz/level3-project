@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
-  name: front-end-deploy
+  name: shipping-deploy
 spec:
   resources:
     inputs:
@@ -39,3 +39,4 @@ spec:
       - "/workspace/$(inputs.params.pathToSvcYamlFile)"
       - "-f"
       - "/workspace/$(inputs.params.pathToIngressYamlFile)"
+      - "-n prod"

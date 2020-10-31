@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
-  name: load-test-deploy
+  name: payment-deploy
 spec:
   resources:
     inputs:
@@ -34,4 +34,4 @@ spec:
       - "/workspace/$(inputs.params.pathToYamlFile)"
       - "-f"
       - "/workspace/$(inputs.params.pathToSvcYamlFile)"
-      - "-n test"
+      - "-n prod"

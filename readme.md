@@ -1,11 +1,9 @@
-# DevOps Bootcamp Level 3 Final Project
 
-## Capstone Project
+## Shock Shop
 
-The aim of the level 3 project is to give you something to demonstrate to potential employers. You will use this as a showcase for the skills you have developed and the tools you have mastered.
+a near production-ready K8S platform hosting the [Weaveworks Shock Shop demo](https://github.com/microservices-demo).
+with the use of AWS, 
 
-## Objectives
-You are to demonstrate a near production-ready K8S platform hosting the [Weaveworks Shock Shop demo](https://github.com/microservices-demo). Your platform must build and deploy your fork of that project.
 
 ## Method
 You will work alone, but you must track your tasks in trello and move them through a kanban process. You will capture am image of your trello board at the start and end of each day and add it to the file 'tasks.md' in the documentation folder.

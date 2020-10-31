@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
-  name: shipping-deploy
+  name: catalogue-deploy
 spec:
   resources:
     inputs:
@@ -11,9 +11,6 @@ spec:
   - name: pathToYamlFile
     description: The path to the yaml file to deploy within the git source
   - name: pathToSvcYamlFile
-    description: The path to the yaml file to service within the git source
-
-  - name: pathToIngressYamlFile
     description: The path to the yaml file to service within the git source
   - name: imageUrl
     description: Url of image repository
@@ -37,5 +34,4 @@ spec:
       - "/workspace/$(inputs.params.pathToYamlFile)"
       - "-f"
       - "/workspace/$(inputs.params.pathToSvcYamlFile)"
-      - "-f"
-      - "/workspace/$(inputs.params.pathToIngressYamlFile)"
+      - "-n prod"
